@@ -15,7 +15,7 @@ const Notes = () => {
     const getNotes = async () => {
       try {
         const response = await axios.get("notes/paper/" + paper._id);
-        //TODO Move to backend
+        
         if (!response.data.length) {
           setError({
             response: {
@@ -55,7 +55,7 @@ const Notes = () => {
         )}
         <li>
           <Link
-            className="rounded-md px-2 py-1 underline decoration-violet-900  decoration-2 underline-offset-2 hover:bg-violet-950 hover:text-slate-100 hover:decoration-0 dark:decoration-inherit dark:hover:bg-violet-900/80 dark:hover:text-slate-200 md:p-2 "
+            className="rounded-md px-2 py-1 underline decoration-violet-900  decoration-2 underline-offset-2 hover:bg-violet-950 hover:text-slate-100 hover:decoration-0 dark:decoration-inherit dark:hover:bg-blue-900/80 dark:hover:text-slate-200 md:p-2 "
             to="students"
           >
             Students

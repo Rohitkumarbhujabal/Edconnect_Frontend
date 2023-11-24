@@ -19,18 +19,16 @@ const InternalResultForm = () => {
     setError("");
     e.preventDefault();
     try {
-      // fetching internal record
       const response = await axios.get("/internal/" + paper);
-      // saving record id for updating/deleting record
       setId(response.data._id);
       setInternal(response.data.marks);
       setDisabled(true);
       setError("");
     } catch (err) {
       setError(err);
-      // incase no record exists
+
       if (err.response.status === 404) {
-        // fetching students list and mapping to add fields
+
         const response = await axios.get("paper/" + paper);
         const students = response.data.students;
         students.forEach((student) => {
@@ -52,17 +50,17 @@ const InternalResultForm = () => {
     e.preventDefault();
     const marks = { id, paper, marks: internal };
     try {
-      // adding new internal mark record
+
       const response = await axios.post("internal/" + paper, marks);
       toast.success(response.data.message);
       setDisabled(true);
       setError("");
       fetchInternal(e);
     } catch (err) {
-      // conflict, record already exists
+
       if (err.response.status === 409) {
         try {
-          // updating internal record
+
           const response = await axios.patch("internal/" + paper, marks);
           toast.success(response.data.message);
           setDisabled(true);
@@ -87,10 +85,9 @@ const InternalResultForm = () => {
     }
   };
 
-  // updating internal state on "onChange" event.
+
   const handleFormChange = (e) => {
-    // the whole thing is a convoluted mess, but it works.
-    // if you have an alternative, DM ;).
+
     const index = parseInt(e.target.id);
     const value = e.target.value;
     const key = e.target.name;
@@ -105,14 +102,14 @@ const InternalResultForm = () => {
   };
 
   return (
-    <main className="internal">
-      <h2 className="mb-2 mt-3 whitespace-break-spaces text-4xl font-bold text-violet-950 underline decoration-inherit decoration-2 underline-offset-4 dark:mt-0 dark:text-slate-400 md:text-6xl">
+    <main className="internal font-mono">
+      <h2 className="mb-2 mt-3 whitespace-break-spaces text-4xl font-bold text-violet-950 underline decoration-inherit decoration-2 underline-offset-4 dark:mt-0 dark:text-slate-200 md:text-6xl">
         Internal Mark
       </h2>
       <section className="form__head">
         <form className="w-full gap-4 accent-violet-900 md:flex">
           <select
-            className="mb-4 block h-10 w-full rounded-md border-[1.5px] border-solid border-slate-400 p-1 pl-2 outline-none selection:border-slate-200 focus:border-violet-900 dark:border-slate-200 dark:caret-inherit dark:focus:border-violet-400 dark:active:border-violet-400 md:w-1/3"
+            className="mb-4 block h-10 w-full rounded-md border-[1.5px] border-solid border-slate-400 p-1 pl-2 outline-none selection:border-slate-200 focus:border-violet-900 dark:border-slate-200 dark:caret-inherit dark:focus:border-blue-400 dark:active:border-violet-400 md:w-1/3"
             placeholder="select paper"
             name="paper"
             id="paper"
@@ -130,7 +127,7 @@ const InternalResultForm = () => {
             ))}
           </select>
           <button
-            className="mb-4 h-10 w-auto rounded-md border-[1.5px] border-solid border-violet-900 bg-slate-800 px-8 py-2 font-semibold tracking-wide text-slate-200 hover:bg-violet-900 focus:bg-violet-900 disabled:cursor-not-allowed dark:border-violet-300 dark:bg-violet-900 dark:text-violet-100 dark:hover:bg-slate-900"
+            className="mb-4 h-10 w-auto rounded-md border-[1.5px] border-solid border-blue-900 bg-slate-800 px-8 py-2 font-semibold tracking-wide text-slate-200 hover:bg-blue-900 focus:bg-violet-900 disabled:cursor-not-allowed dark:border-blue-300 dark:bg-blue-900 dark:text-violet-100 dark:hover:bg-slate-900"
             type="submit"
             onClick={(e) => fetchInternal(e)}
           >
@@ -160,7 +157,7 @@ const InternalResultForm = () => {
                     <tr
                       key={index}
                       className={
-                        // checking whether the student passed (total mark is above 7), bgcolor to represent it.
+                      
                         parseInt(student?.test) +
                           parseInt(student?.seminar) +
                           parseInt(student?.assignment) +

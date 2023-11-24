@@ -26,7 +26,7 @@ const RowWithCheckbox = ({ keys, disabled, value, handleFormChange }) => {
       key={keys}
       className={
         value.present
-          ? "border-t-[1px] border-slate-400 bg-violet-900/50 first:border-none"
+          ? "border-t-[1px] border-slate-400 bg-blue-900/50 first:border-none"
           : "border-t-[1px] border-slate-400"
       }
     >

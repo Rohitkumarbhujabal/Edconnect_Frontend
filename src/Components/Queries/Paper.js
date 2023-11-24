@@ -7,8 +7,8 @@ const Paper = () => {
   const { setPaper, paperList } = useContext(UserContext);
 
   return (
-    <main className="paper">
-      <h2 className="mb-2 mt-3 whitespace-break-spaces text-4xl font-bold text-violet-950 underline decoration-inherit decoration-2 underline-offset-4 dark:mt-0 dark:text-slate-400 md:text-6xl">
+    <main className="paper font-mono">
+      <h2 className="mb-2 mt-3 whitespace-break-spaces text-4xl font-bold text-violet-950 underline decoration-inherit decoration-2 underline-offset-4 dark:mt-0 dark:text-slate-200 md:text-6xl">
         Papers
       </h2>
       {paperList.length ? (

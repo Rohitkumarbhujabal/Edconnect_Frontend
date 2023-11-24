@@ -20,7 +20,7 @@ const PaperForm = () => {
   const [error, setError] = useState("");
   const navigate = useNavigate();
 
-  // Fetch teachers
+
   useEffect(() => {
     const getTeachers = async () => {
       const list = await axios.get("/teacher/list/" + user.department);
@@ -46,18 +46,18 @@ const PaperForm = () => {
       [e.target.id]: e.target.value,
     });
   };
-
+  
   return (
     <>
       {user.role === "HOD" ? (
-        <main className="paper">
-          <h2 className="mb-2 mt-3 whitespace-break-spaces text-4xl font-bold text-violet-950 underline decoration-inherit decoration-2 underline-offset-4 dark:mt-0 dark:text-slate-400 md:text-6xl">
+        <main className="paper font-mono">
+          <h2 className="mb-2 mt-3 whitespace-break-spaces text-4xl font-bold text-violet-950 underline decoration-inherit decoration-2 underline-offset-4 dark:mt-0 dark:text-slate-200 md:text-6xl">
             Add Paper
           </h2>
           <form className="w-full md:w-1/3">
             <label htmlFor="department">Department:</label>
             <input
-              className="mb-4 block h-10 w-full rounded-md border-[1.5px] border-solid border-slate-400 p-1 pl-2 outline-none selection:border-slate-200 focus:border-violet-900 dark:border-slate-200 dark:caret-inherit dark:focus:border-violet-400 dark:active:border-violet-400"
+              className="mb-4 block h-10 w-full rounded-md border-[1.5px] border-solid border-slate-400 p-1 pl-2 outline-none selection:border-slate-200 focus:border-blue-900 dark:border-slate-200 dark:caret-inherit dark:focus:border-blue-400 dark:active:border-violet-400"
               name="department"
               type="text"
               required
@@ -67,7 +67,7 @@ const PaperForm = () => {
             />
             <label htmlFor="paper">Paper:</label>
             <input
-              className="mb-4 block h-10 w-full rounded-md border-[1.5px] border-solid border-slate-400 p-1 pl-2 outline-none selection:border-slate-200 focus:border-violet-900 dark:border-slate-200 dark:caret-inherit dark:focus:border-violet-400 dark:active:border-violet-400"
+              className="mb-4 block h-10 w-full rounded-md border-[1.5px] border-solid border-slate-400 p-1 pl-2 outline-none selection:border-slate-200 focus:border-blue-900 dark:border-slate-200 dark:caret-inherit dark:focus:border-blue-400 dark:active:border-violet-400"
               type="text"
               name="paper"
               id="paper"
@@ -77,7 +77,7 @@ const PaperForm = () => {
             />
             <label htmlFor="semester">Semester:</label>
             <select
-              className="mb-4 block h-10 w-full rounded-md border-[1.5px] border-solid border-slate-400 p-1 pl-2 outline-none selection:border-slate-200 focus:border-violet-900 dark:border-slate-200 dark:caret-inherit dark:focus:border-violet-400 dark:active:border-violet-400"
+              className="mb-4 block h-10 w-full rounded-md border-[1.5px] border-solid border-slate-400 p-1 pl-2 outline-none selection:border-slate-200 focus:border-blue-900 dark:border-slate-200 dark:caret-inherit dark:focus:border-blue-400 dark:active:border-violet-400"
               id="semester"
               value={newPaper.semester}
               required
@@ -92,10 +92,12 @@ const PaperForm = () => {
               <option value="IV">IV</option>
               <option value="V">V</option>
               <option value="VI">VI</option>
+              <option value="VII">VII</option>
+              <option value="VIII">VIII</option>
             </select>
             <label htmlFor="year">Year:</label>
             <input
-              className="mb-4 block h-10 w-full rounded-md border-[1.5px] border-solid border-slate-400 p-1 pl-2 outline-none selection:border-slate-200 focus:border-violet-900 dark:border-slate-200 dark:caret-inherit dark:focus:border-violet-400 dark:active:border-violet-400"
+              className="mb-4 block h-10 w-full rounded-md border-[1.5px] border-solid border-slate-400 p-1 pl-2 outline-none selection:border-slate-200 focus:border-blue-900 dark:border-slate-200 dark:caret-inherit dark:focus:border-blue-400 dark:active:border-violet-400"
               type="number"
               min="2000"
               max="2030"
@@ -107,7 +109,7 @@ const PaperForm = () => {
             />
             <label htmlFor="teacher">Teacher:</label>
             <select
-              className="mb-4 block h-10 w-full rounded-md border-[1.5px] border-solid border-slate-400 p-1 pl-2 outline-none selection:border-slate-200 focus:border-violet-900 dark:border-slate-200 dark:caret-inherit dark:focus:border-violet-400 dark:active:border-violet-400"
+              className="mb-4 block h-10 w-full rounded-md border-[1.5px] border-solid border-slate-400 p-1 pl-2 outline-none selection:border-slate-200 focus:border-blue-900 dark:border-slate-200 dark:caret-inherit dark:focus:border-blue-400 dark:active:border-violet-400"
               required
               id="teacher"
               name="teacher"
@@ -124,7 +126,7 @@ const PaperForm = () => {
               ))}
             </select>
             <button
-              className="mb-4 flex h-10 w-auto items-center gap-2 rounded-md border-[1.5px] border-solid border-violet-900 bg-slate-800 px-6 py-2 font-semibold tracking-wide text-slate-200 hover:bg-violet-900 focus:bg-violet-900 dark:border-violet-300 dark:bg-violet-900 dark:text-violet-100 dark:hover:bg-slate-900"
+              className="mb-4 flex h-10 w-auto items-center gap-2 rounded-md border-[1.5px] border-solid border-violet-900 bg-slate-800 px-6 py-2 font-semibold tracking-wide text-slate-200 hover:bg-blue-900 focus:bg-blue-900 dark:border-blue-300 dark:bg-blue-900 dark:text-blue-100 dark:hover:bg-slate-900"
               type="submit"
               onClick={(e) => addPaper(e)}
             >

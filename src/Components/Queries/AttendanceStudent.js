@@ -27,7 +27,7 @@ const AttendanceStudent = () => {
 
   return (
     <main className="attendance">
-      <h2 className="mb-2 mt-3 whitespace-break-spaces text-4xl font-bold text-violet-950 underline decoration-inherit decoration-2 underline-offset-4 dark:mt-0 dark:text-slate-400 md:text-6xl">
+      <h2 className="mb-2 mt-3 whitespace-break-spaces text-4xl font-bold text-violet-950 underline decoration-inherit decoration-2 underline-offset-4 dark:mt-0 dark:text-slate-200 md:text-6xl">
         Attendance
       </h2>
       <section className="attendance__head">
@@ -48,7 +48,7 @@ const AttendanceStudent = () => {
           </div>
           <div className="flex items-end">
             <button
-              className="mb-4 h-10 rounded-md border-[1.5px] border-solid border-violet-900 bg-slate-800 px-8 py-2 font-semibold tracking-wide text-slate-200 hover:bg-violet-900 focus:bg-violet-900 disabled:cursor-not-allowed dark:border-violet-300 dark:bg-violet-900 dark:text-violet-100 dark:hover:bg-slate-900 md:w-auto"
+              className="mb-4 h-10 rounded-md border-[1.5px] border-solid border-violet-900 bg-slate-800 px-8 py-2 font-semibold tracking-wide text-slate-200 hover:bg-blue-900 focus:bg-blue-900 disabled:cursor-not-allowed dark:border-blue-300 dark:bg-blue-900 dark:text-blue-100 dark:hover:bg-slate-900 md:w-auto"
               type="submit"
               onClick={(e) => fetchAttendance(e)}
             >
@@ -70,7 +70,7 @@ const AttendanceStudent = () => {
                       key={index}
                       className={
                         period.attendance.present
-                          ? "border-t-[1px] border-slate-400 bg-violet-900/50 first:border-none"
+                          ? "border-t-[1px] border-slate-400 bg-blue-900/50 first:border-none"
                           : "border-t-[1px] border-slate-400"
                       }
                     >

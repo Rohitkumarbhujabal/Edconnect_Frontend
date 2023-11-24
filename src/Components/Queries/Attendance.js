@@ -44,15 +44,13 @@ const Attendance = () => {
     }
   };
 
-  // adding new attendance and updating existing attendance record
+
   const addAttendance = async (e) => {
     e.preventDefault();
-    // removing student names from data since only studentId is stored in database
     const newData = attendance.map((i) => {
       return { student: i._id, present: i.present };
     });
     try {
-      // adding a new attendance record
       const response = await axios.post(
         `/attendance/${paper}/${date}/${hour}`,
         { paper, date, hour, attendance: newData }
@@ -62,13 +60,12 @@ const Attendance = () => {
       setError("");
       fetchAttendance(e);
     } catch (err) {
-      // conflict, attendance record already exists
+
       if (err?.response.status === 409) {
         const newData = attendance.map((i) => {
           return { student: i.student._id, present: i.present };
         });
         try {
-          // updating the old attendance record
           const response = await axios.patch(
             `/attendance/${paper}/${date}/${hour}`,
             { id, paper, date, hour, attendance: newData }
@@ -97,10 +94,8 @@ const Attendance = () => {
     }
   };
 
-  // updating attendance state on "onChange" event.
   const handleFormChange = (e) => {
-    // the whole thing is a convoluted mess, but it works.
-    // if you have an alternative, DM ;).
+
     const index = parseInt(e.target.id);
     const newStudent = attendance[index];
     newStudent.present = !newStudent.present;
@@ -112,8 +107,8 @@ const Attendance = () => {
   };
 
   return (
-    <main className="attendance">
-      <h2 className="mb-2 mt-3 whitespace-break-spaces text-4xl font-bold text-violet-950 underline decoration-inherit decoration-2 underline-offset-4 dark:mt-0 dark:text-slate-400 md:text-6xl">
+    <main className="attendance font-mono">
+      <h2 className="mb-2 mt-3 whitespace-break-spaces text-4xl font-bold text-violet-950 underline decoration-inherit decoration-2 underline-offset-4 dark:mt-0 dark:text-slate-200 md:text-6xl">
         Attendance
       </h2>
       <section className="attendance__head">
@@ -178,7 +173,7 @@ const Attendance = () => {
           </div>
           <div className="flex items-end">
             <button
-              className=" mb-4 h-10 rounded-md border-[1.5px] border-solid border-violet-900 bg-slate-800 px-8 py-2 font-semibold tracking-wide text-slate-200 hover:bg-violet-900 focus:bg-violet-900 disabled:cursor-not-allowed dark:border-violet-300 dark:bg-violet-900 dark:text-violet-100 dark:hover:bg-slate-900 md:w-auto"
+              className=" mb-4 h-10 rounded-md border-[1.5px] border-solid border-violet-900 bg-slate-800 px-8 py-2 font-semibold tracking-wide text-slate-200 hover:bg-violet-900 focus:bg-violet-900 disabled:cursor-not-allowed dark:border-blue-300 dark:bg-blue-900 dark:text-violet-100 dark:hover:bg-slate-900 md:w-auto"
               type="submit"
               onClick={(e) => fetchAttendance(e)}
             >
@@ -214,14 +209,14 @@ const Attendance = () => {
             <div className="flex gap-4">
               <button
                 type="submit"
-                className="mb-4 flex h-10 w-auto items-center gap-2 rounded-md border-[1.5px] border-solid border-violet-900 bg-slate-800 px-6 py-2 font-semibold tracking-wide text-slate-200 hover:bg-violet-900 focus:bg-violet-900 dark:border-violet-300 dark:bg-violet-900 dark:text-violet-100 dark:hover:bg-slate-900"
+                className="mb-4 flex h-10 w-auto items-center gap-2 rounded-md border-[1.5px] border-solid border-violet-900 bg-slate-800 px-6 py-2 font-semibold tracking-wide text-slate-200 hover:bg-violet-900 focus:bg-violet-900 dark:border-violet-300 dark:bg-blue-900 dark:text-violet-100 dark:hover:bg-slate-900"
                 onClick={(e) => setDisabled(false)}
               >
                 <FaEdit /> Edit
               </button>
               <button
                 type="submit"
-                className="mb-4 flex h-10 w-auto items-center gap-2 rounded-md border-[1.5px] border-solid border-violet-900 bg-slate-800 px-4 py-2 font-semibold tracking-wide text-slate-200 hover:bg-red-700 focus:bg-violet-900 dark:border-violet-300 dark:bg-violet-900 dark:text-violet-100 dark:hover:bg-red-700"
+                className="mb-4 flex h-10 w-auto items-center gap-2 rounded-md border-[1.5px] border-solid border-violet-900 bg-slate-800 px-4 py-2 font-semibold tracking-wide text-slate-200 hover:bg-red-700 focus:bg-violet-900 dark:border-violet-300 dark:bg-blue-900 dark:text-violet-100 dark:hover:bg-red-700"
                 onClick={(e) => deleteAttendance(e)}
               >
                 <FaTrash /> Delete
@@ -233,7 +228,7 @@ const Attendance = () => {
           {attendance?.length && !disabled ? (
             <button
               type="submit"
-              className="mb-4 flex h-10 w-auto items-center gap-2 rounded-md border-[1.5px] border-solid border-violet-900 bg-slate-800 px-4 py-2 font-semibold tracking-wide text-slate-200 hover:bg-violet-900 focus:bg-violet-900 dark:border-violet-300 dark:bg-violet-900 dark:text-violet-100 dark:hover:bg-slate-900 "
+              className="mb-4 flex h-10 w-auto items-center gap-2 rounded-md border-[1.5px] border-solid border-violet-900 bg-slate-800 px-4 py-2 font-semibold tracking-wide text-slate-200 hover:bg-violet-900 focus:bg-violet-900 dark:border-violet-300 dark:bg-blue-900 dark:text-violet-100 dark:hover:bg-slate-900 "
               onClick={(e) => addAttendance(e)}
             >
               <FaPlus /> Save
